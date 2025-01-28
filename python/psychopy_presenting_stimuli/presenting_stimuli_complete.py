@@ -5,7 +5,7 @@ import os
 win = visual.Window([800,800],color="grey", units='pix', checkTiming=False) 
 
 # add a Mouse
-mouse = event.Mouse(win=win)
+mouse = event.Mouse(win=win) # you can actually switch the window that mouse works. 
 
 #positions
 positions = {"left": (-200,0),"right": (200,0)}
@@ -16,7 +16,8 @@ frame_list = [visual.Rect(win,fillColor="white",lineWidth=5,lineColor="black",si
 
 # add a text prompt
 instruction_text = "Click on the bulbasaur."
-instruction = visual.TextStim(win, text = instruction_text,color="white", height=30, pos = (0,-150))
+instruction = visual.TextStim(win, text = instruction_text,color="white", height=30, pos = (0,-150)) # x and y axis centered on 0
+    # you have to draw (down belooooow) this to make this show up 
 
 #create images
 image_path_1 = os.path.join(os.getcwd(),"stimuli","images","bulbasaur.png")
@@ -40,7 +41,7 @@ for frame in frame_list:
     frame.draw()
 
 #draw instruction
-instruction.draw()
+instruction.draw() 
 
 # draw images
 image_1.draw()
@@ -52,11 +53,11 @@ win.flip()
 #check mouse until pressed in one of the pics
 while True:
      if mouse.isPressedIn(image_1) or mouse.isPressedIn(image_2):
-            response = mouse.getPos()
+            response = mouse.getPos() # where did the mouse click? show location like... [-180, -11]
             break
 
 # present feedback
-if image_1.contains(response):
+if image_1.contains(response): # if you have mouse response inside the image 
      #correct
      correct_feedback.draw()
      correct_feedback_sound.play() 
