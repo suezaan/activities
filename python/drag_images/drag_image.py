@@ -22,14 +22,14 @@ max_time = 10
 dragging_timer = core.Clock()
 dragging_timer.reset()
 
-while dragging_timer.getTime() <= max_time:
+while dragging_timer.getTime() <= max_time: # after 10s, not draggable. 
     while mouse.isPressedIn(bulbie):
         bulbie.pos = mouse.getPos()
         field.draw()
         bulbie.draw()
-        bulbie.win.flip()
-        if dragging_timer.getTime() > max_time:
-            break
+        win.flip()
+        if dragging_timer.getTime() > max_time: # if sb drags forever... break 
+            break 
 
 print(dragging_timer.getTime())
 
